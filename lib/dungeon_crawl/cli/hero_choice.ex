@@ -7,14 +7,9 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     Shell.info("Start by choosing your hero:")
 
     heroes = DungeonCrawl.Heroes.all()
-    find_hero_by_index = &Enum.at(heroes, &1)
 
     heroes
-    |> display_options()
-    |> generate_question
-    |> Shell.prompt()
-    |> parse_answer
-    |> find_hero_by_index.()
+    |> ask_for_option
     |> confirm_hero
   end
 
